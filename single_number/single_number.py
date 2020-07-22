@@ -4,8 +4,22 @@ Returns: an integer
 '''
 def single_number(arr):
     # Your code here
+    sorted = selection_sort(arr)
+    for i in range(0,len(sorted),2):
+        if sorted[i] is not sorted[i+1]:
+            return sorted[i]
 
-    pass
+def selection_sort(arr):
+    for i in range(0, len(arr)):
+        low = i
+        for j in range(i + 1, len(arr)):
+            if arr[j] < arr[low]:
+                low = j
+        temp = arr[i]
+        arr[i] = arr[low]
+        arr[low] = temp
+    return arr
+
 
 
 if __name__ == '__main__':
