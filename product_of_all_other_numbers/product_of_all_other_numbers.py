@@ -4,8 +4,29 @@ Returns: a List of integers
 '''
 def product_of_all_other_numbers(arr):
     # Your code here
-
-    pass
+    #create hash table with the number of occurances
+    lookup = {}
+    for i in range(len(arr)):
+        if arr[i] in lookup.keys():
+            lookup[arr[i]] += 1
+        else:
+            lookup[arr[i]] = 1
+    #loop through array
+    for i in range(len(arr)):
+        sum = 1
+        for k, v in lookup.items():
+            if k == arr[i]:
+                if lookup[k] == 1:
+                    pass
+                else:
+                    sum = sum * k**(v-1)
+            else:    
+                sum = sum * k**v
+        arr[i] = sum
+    #for each number multiply all of the keys to the power of the value
+    #except for the key that matches current pos
+    #if value is 1 then use 1, else reduce power by one
+    return arr
 
 
 if __name__ == '__main__':
